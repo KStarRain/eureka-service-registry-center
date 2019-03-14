@@ -1,0 +1,22 @@
+server:
+  port: 10001
+
+spring:
+  application:
+    name: eureka-service-registry-center
+
+eureka:
+  #dashboard:
+  #  path: home
+  instance:
+    #preferIpAddress: false
+    #ipAddress: 106.14.146.19
+    hostname: localhost
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id:${random.value}}    
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    
